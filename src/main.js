@@ -1,10 +1,10 @@
 import Vue from 'vue'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
-import "@/assets/css/main.css";
-Vue.use(ElementUI);
+import '@/assets/css/main.css'
+Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
@@ -12,5 +12,5 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
-  render:h => h(App)
-}).$mount("#app")
+  render: h => h(App)
+}).$mount('#app')

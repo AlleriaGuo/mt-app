@@ -4,8 +4,10 @@
       <el-header height="">
         <my-header />
       </el-header>
-      <el-main>Main</el-main>
-      <el-footer  height="">
+      <el-main>
+        <router-view></router-view>
+      </el-main>
+      <el-footer height="">
         <my-footer />
       </el-footer>
     </el-container>
@@ -25,5 +27,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/css/public/layout.scss";
+  @import "@/assets/css/public/layout.scss";
+  @import "@/assets/css/public/layout.scss";
 </style>

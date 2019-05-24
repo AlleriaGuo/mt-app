@@ -1,5 +1,5 @@
 <template>
-  <div class="m-header-topbar m-header">
+  <div class="m-header">
     <el-row>
       <top-bar />
     </el-row>
