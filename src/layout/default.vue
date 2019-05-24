@@ -5,19 +5,23 @@
         <my-header />
       </el-header>
       <el-main>Main</el-main>
-      <el-footer  height="">Footer</el-footer>
+      <el-footer  height="">
+        <my-footer />
+      </el-footer>
     </el-container>
   </div>
 </template>
 
 <script>
-  import MyHeader from "@/components/header/index.vue";
-  export default {
-    name: 'default',
-    components:{
-      MyHeader
-    }
+import MyHeader from '@/components/header/index.vue'
+import MyFooter from '@/components/footer/index.vue'
+export default {
+  name: 'default',
+  components: {
+    MyHeader,
+    MyFooter
   }
+}
 </script>
 
 <style lang="scss">
