@@ -8,6 +8,18 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = false
 
+Vue.directive('document-click', {
+  bind (el, binding, vnode) { // 绑定的时候调用一次
+    // console.log('---bind')
+    document.addEventListener('click', binding.value, false)
+  },
+  inserted () { // 绑定元素插入到父节点时调用
+    // console.log('---inserted')
+  },
+  update (el, binding) { // dom元素，节点发生变化时触发
+    console.log('---update')
+  }
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
