@@ -7,7 +7,7 @@
           <h2>{{title}}</h2>
           <div class="wrapper">
             <div class="col">
-              <span v-document-click="documentClick" :class="{'mt-item':true,'active':item == value}" v-for="(item,index) in list" :key="index" @click="changeValue(item)">{{item}}</span>
+              <span :class="{'mt-item':true,'active':item == value}" v-for="(item,index) in list" :key="index" @click="changeValue(item)">{{item}}</span>
             </div>
           </div>
         </div>
