@@ -11,13 +11,22 @@
 import Province from '@/components/changeCity/province.vue'
 import Hot from '@/components/changeCity/hot.vue'
 import Categroy from '@/components/changeCity/categroy.vue'
+import api from '@/api/index.js'
 export default {
   data(){
     return{
       title:'热门城市',
-      hotList:['哈尔滨', '佳木斯', '牡丹江', '鹤岗'],
-      recentList:['哈尔滨', '佳木斯', '牡丹江', '鹤岗']
+      hotList:[],
+      recentList:[]
     }
+  },
+  created(){
+    api.hotCity().then(res => {
+      this.hotList = res.data.data.map((item) => item.name);
+    })
+    api.recentCity().then(res =>{
+      this.recentList = res.data.data.map((item) => item.name);
+    })
   },
   components: {
     Province,

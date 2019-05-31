@@ -8,6 +8,7 @@
         :showWrapperActive="provinceActive"
         @change_active="changeProvinceActive"
         @change="changeProvince"
+        className="province"
       />
       <m-select
         :list="cityList"
@@ -16,6 +17,8 @@
         :showWrapperActive="cityActive"
         @change_active="changeCityActive"
         @change="changeCity"
+        :disabled="cityDisabled"
+        className="city"
       />
       <span>直接搜索：</span>
       <el-select
@@ -38,22 +41,33 @@
 
 <script>
 import MSelect from './select.vue'
+import api from '@/api/index.js'
 export default {
   data () {
     return {
       province: '省份',
-      provinceList: ['山东', '甘肃', '黑龙江', '湖北', '浙江', '沈阳'],
+      provinceList: [],
       cityList: ['哈尔滨', '佳木斯', '牡丹江', '鹤岗'],
       city: '城市',
       provinceActive:false,
       cityActive:false,
       searchList:['哈尔滨', '佳木斯', '牡丹江', '鹤岗'],
       searchWord: '',
-      loading:false
+      loading:false,
+      cityDisabled:true
     }
   },
   components: {
     MSelect
+  },
+  created(){
+    api.getProvince().then(res => {
+      console.log(res)
+      this.provinceList = res.data.data.map((item) => {
+        item.name = item.provinceName;
+        return item
+      })
+    })
   },
   methods:{
     changeProvinceActive(flag){
@@ -68,11 +82,15 @@ export default {
         this.provinceActive = false
       }
     },
-    changeProvince(value){
-      this.province = value;
+    changeProvince(item){
+      this.province = item.name;
+      this.cityDisabled = false;
+      this.cityList = item.cityInfoList;
     },
-    changeCity(value){
-      this.city = value;
+    changeCity(item){
+      this.city = item.name;
+      this.$store.dispatch('setPosition',item)
+      this.$router.push({name:'index'})
     },
     remoteMethod(val){
       // 请求后端接口
